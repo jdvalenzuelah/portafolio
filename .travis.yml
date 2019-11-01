@@ -4,9 +4,8 @@ node_js:
 install: true
 before_script:
   - yarn install
-script: |-
-  - sed -i '$s/}/performance: {hints: false},\n}/' node_modules/react-scripts-kotlin/config/webpack.config.prod.js
-  - yarn build
+script: |
+  sed -i '$s/}/performance: {hints: false},\n}/' node_modules/react-scripts-kotlin/config/webpack.config.prod.js && yarn build
 deploy:
   provider: pages
   skip_cleanup: true
