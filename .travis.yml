@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "node"
 install: true
+script:
+  - echo "No test defined"
 deploy:
   provider: pages
   skip_cleanup: true
