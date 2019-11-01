@@ -3,7 +3,7 @@ node_js:
   - "node"
 install: true
 script:
-  - echo "No test defined"
+  - yarn build
 deploy:
   provider: pages
   skip_cleanup: true
