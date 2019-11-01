@@ -2,7 +2,7 @@
   "name": "personal-page",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://val171001.github.io/",
+  "homepage": "https://val171001.github.io/portafolio",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.11.0",
@@ -19,6 +19,6 @@
     "get-types": "react-scripts-kotlin get-types --dest=src/types",
     "postinstall": "npm run gen-idea-libs",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   }
 }
