@@ -2,7 +2,9 @@
   "name": "personal-page",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://val171001.github.io/",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },
@@ -15,6 +17,8 @@
     "eject": "react-scripts-kotlin eject",
     "gen-idea-libs": "react-scripts-kotlin gen-idea-libs",
     "get-types": "react-scripts-kotlin get-types --dest=src/types",
-    "postinstall": "npm run gen-idea-libs"
+    "postinstall": "npm run gen-idea-libs",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   }
 }
