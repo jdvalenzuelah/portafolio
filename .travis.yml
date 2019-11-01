@@ -4,7 +4,7 @@ node_js:
 install: true
 before_script:
   - yarn install
-script:
+script: |-
   - sed -i '$s/}/performance: {hints: false},\n}/' node_modules/react-scripts-kotlin/config/webpack.config.prod.js
   - yarn build
 deploy:
