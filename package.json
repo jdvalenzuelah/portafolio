@@ -4,11 +4,11 @@
   "private": true,
   "homepage": "https://val171001.github.io/portafolio",
   "dependencies": {
-    "gh-pages": "^2.1.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },
   "devDependencies": {
+    "gh-pages": "^2.1.1",
     "react-scripts-kotlin": "4.0.1"
   },
   "scripts": {
