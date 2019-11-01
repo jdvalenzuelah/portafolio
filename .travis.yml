@@ -3,6 +3,7 @@ node_js:
   - "node"
 install: true
 script:
+  - yarn install
   - yarn build
 deploy:
   provider: pages
