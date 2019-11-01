@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/val171001/portafolio.svg?token=qEAp4Ny9ZqFuo4ghaAzy&branch=master)](https://travis-ci.com/val171001/portafolio)
+
 This project was bootstrapped with [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app).
 
 Below you will find some useful information on how to work with this application.<br>
