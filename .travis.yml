@@ -7,7 +7,7 @@ before_script:
 script: |
   sed -i '$s/}/performance: {hints: false},\n}/' node_modules/react-scripts-kotlin/config/webpack.config.prod.js && yarn build
 after_success:
-  - echo "$TRAVIS_BRANCH"
+  - echo $TRAVIS_BRANCH
 deploy:
   provider: pages
   skip_cleanup: true
