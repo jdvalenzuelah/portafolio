@@ -6,13 +6,10 @@ before_script:
   - yarn install
 script: |
   sed -i '$s/}/performance: {hints: false},\n}/' node_modules/react-scripts-kotlin/config/webpack.config.prod.js && yarn build
-jobs:
-  include:
-    - stage: merge
-      on:
-        tag: /^stable.*$/
-        condition: "$TRAVIS_TAG =~ ^stable.*$"
-      script: git status
+after_success:
+  - echo "On develop"
+  on:
+    branch: develop
 deploy:
   provider: pages
   skip_cleanup: true
