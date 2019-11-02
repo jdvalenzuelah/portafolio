@@ -9,10 +9,10 @@ script: |
 jobs:
   include:
     - stage: merge
-    script: git status
-    on:
-      branch: develop
-      condition: "$TRAVIS_TAG =~ ^stable.*$"
+      script: git status
+      on:
+        branch: develop
+        condition: "$TRAVIS_TAG =~ ^stable.*$"
 deploy:
   provider: pages
   skip_cleanup: true
