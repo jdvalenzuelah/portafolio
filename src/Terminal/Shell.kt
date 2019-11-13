@@ -2,9 +2,13 @@ package Terminal
 
 import react.*
 import react.dom.*
-import kotlinext.js.*
+import utils.PROJECTS
+import utils.WORK_EXPERIENCE
+import utils.STUDIES
+import utils.ABOUT_ME
 
-val projects = requireAll(require.context("src", true, js("/\\projects.json$/"))) to JSON
+// TODO Check grammar
+// TODO Improve css layout and fonts (Color & Size)
 
 data class Command(val command: String,
                    val resultKey: String)
@@ -38,20 +42,45 @@ class Shell(props: ShellProps): RComponent<ShellProps, ShellState>() {
     }
 
     private fun RBuilder.getResults(key: String) {
-        console.log(projects)
         when(key) {
-            "whoami" -> pre {+aboutMe}
-            "projects" -> span {
-                div("projects") {
-
+            "whoami" -> pre {+ABOUT_ME}
+            "projects" -> div("projects") {
+                for (project in PROJECTS) {
                     div("project") {
-                        h1("title"){ +"Reciclaje UVG" }
-                        p("description") {
-                            +"""
-                                Aplicacion para fomentar el reciclaje en lugares publicos.
-                                La aplicacion fue desarrollada utilizando Vue + quasar para la interfaz grafica 
-                            """.trimIndent()
+                        h1("title"){ a {
+                            attrs.href = project.href ?: ""
+                            +project.title
+                        } }
+                        p("description") { +project.description}
+                        project.code?.let {
+                            a{
+                                attrs.href = it
+                                +"visitar"
+                            }
                         }
+                    }
+                }
+                a("github") {
+                    attrs.href = "https://github.com/val171001"
+                    +"Mas proyectos en github val171001"
+                }
+            }
+            "work" -> div("work-experience") {
+                for( work in WORK_EXPERIENCE) {
+                    div("work") {
+                        h1("title") {+work.company}
+                        h3("position") {+work.job}
+                        h4("date") {+work.date}
+                        work.description?.let { p("description"){+it} }
+                    }
+                }
+            }
+            "studies" -> div("studies") {
+                for(study in STUDIES) {
+                    div("study") {
+                        h2("degree") {+study.degree}
+                        h3("school") {+study.school}
+                        h4("date") {+study.date}
                     }
                 }
             }
@@ -75,7 +104,7 @@ class Shell(props: ShellProps): RComponent<ShellProps, ShellState>() {
             }
         }
     }
-
+    
 }
 
 fun RBuilder.shell(user: String, dir: String, commands: List<Command>) = child(Shell::class){
@@ -83,10 +112,3 @@ fun RBuilder.shell(user: String, dir: String, commands: List<Command>) = child(S
     attrs.dir = dir
     attrs.commandList = commands
 }
-
-val aboutMe = """ 
- _____ ____________     _______    _    ________      ________   ______     _______      _______
-   |  |     |_____|     |______     \  / |_____||     |_____| \  |____|     |______|     |_____|
- __|  |___________|_____|______      \/  |     ||_____|_____|  \_/____|_____|______|_____|     |
-                                   web developer and sys admin
-"""
