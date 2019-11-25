@@ -1,0 +1,68 @@
+body * {
+    margin: 0%;
+    font-size: 14px;
+    color: white;
+    text-align: left;
+}
+
+.shell {
+    margin: 10px;
+    font-family: FreeMono, monospace;
+}
+
+.shell-command {
+    margin: 15px;
+}
+
+.input {
+    margin: 5px;
+    display: flex;
+}
+
+.status {
+    color: #2FD0C3;
+    margin-right: 5px;
+}
+
+.result {
+    margin: 5px;
+}
+
+.ascii {
+    font-weight: bold;
+    color: #2FD4CE;
+}
+
+.project > .description,
+.work > .description,
+.study > .date {
+    color: #aaa;
+}
+
+.project > a,
+.work > .date,
+.study > .school {
+    color: #B3A600;
+}
+
+.git > a {
+    color: orangered;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+body {
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*# sourceMappingURL=main.2cba488e.css.map*/
