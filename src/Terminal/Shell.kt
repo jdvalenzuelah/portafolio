@@ -7,9 +7,6 @@ import utils.WORK_EXPERIENCE
 import utils.STUDIES
 import utils.ABOUT_ME
 
-// TODO Check grammar
-// TODO Improve css layout and fonts (Color & Size)
-
 data class Command(val command: String,
                    val resultKey: String)
 
@@ -43,11 +40,11 @@ class Shell(props: ShellProps): RComponent<ShellProps, ShellState>() {
 
     private fun RBuilder.getResults(key: String) {
         when(key) {
-            "whoami" -> pre {+ABOUT_ME}
+            "whoami" -> pre("ascii") {+ABOUT_ME}
             "projects" -> div("projects") {
-                for (project in PROJECTS) {
+                PROJECTS.forEachIndexed { index, project ->
                     div("project") {
-                        h1("title"){ a {
+                        h1("title"){ +"[ $index ] "; a {
                             attrs.href = project.href ?: ""
                             +project.title
                         } }
@@ -60,25 +57,27 @@ class Shell(props: ShellProps): RComponent<ShellProps, ShellState>() {
                         }
                     }
                 }
-                a("github") {
-                    attrs.href = "https://github.com/val171001"
-                    +"Mas proyectos en github val171001"
+                span("git") {
+                    a {
+                        attrs.href = "https://github.com/val171001"
+                        +"Mas proyectos en github val171001"
+                    }
                 }
             }
             "work" -> div("work-experience") {
-                for( work in WORK_EXPERIENCE) {
+                WORK_EXPERIENCE.forEachIndexed { index, work ->
                     div("work") {
-                        h1("title") {+work.company}
-                        h3("position") {+work.job}
+                        h1("title") {+"[ $index ] "; a("underline"){+"${work.company} - ${work.job}"} }
                         h4("date") {+work.date}
                         work.description?.let { p("description"){+it} }
                     }
                 }
             }
             "studies" -> div("studies") {
-                for(study in STUDIES) {
+                STUDIES.forEachIndexed { index, study ->
+                    console.log(study)
                     div("study") {
-                        h2("degree") {+study.degree}
+                        h2("degree") {+"[ $index ] "; a("underline"){+"${study.degree}"} }
                         h3("school") {+study.school}
                         h4("date") {+study.date}
                     }
@@ -92,7 +91,7 @@ class Shell(props: ShellProps): RComponent<ShellProps, ShellState>() {
     }
     override fun RBuilder.render() {
         div("terminal") {
-            for(command in history) {
+            history.forEach { command ->
                 div("shell-command") {
                     attrs { key = command.resultKey }
                     div {
@@ -104,7 +103,7 @@ class Shell(props: ShellProps): RComponent<ShellProps, ShellState>() {
             }
         }
     }
-    
+
 }
 
 fun RBuilder.shell(user: String, dir: String, commands: List<Command>) = child(Shell::class){

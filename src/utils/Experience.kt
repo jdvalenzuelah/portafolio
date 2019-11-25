@@ -14,6 +14,7 @@ data class Studies(val school: String,
                    val degree: String,
                    val date: String)
 
+// FIXME grammar
 val WORK_EXPERIENCE = listOf(
         Work("Kemik.gt", "Desarrollador web", "Marzo 2019 - Presente", "Encargado del desarrollo de herramientas internas. Desarrollo utilizando kotlin (retrofit, jackson, http4k), Vue, PHP, Python"),
         Work("Detektor", "Sys Admin", "Septiembre 2016 - Octubre 2016", "Encargado del mantenimiento de servidores, y todo equipo de computo interno utilizanod herramientos como bash, power shell, windows server, nginx")
